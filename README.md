@@ -15,3 +15,29 @@ Write a command line application in any language that accepts a json string of k
 Write a second command line application that sends to STDOUT statistics about the stored records, including the maximum and minimum values for numerical inputs, the most common responses for string inputs, and anything else you think might be relevant.
 
 Instructions for installing and running your applications should be added to this README file.
+
+## How to run
+
+`story_generator` is a CLI application written in rust. To install, first [install rust](https://rustup.rs/) and then build the project with `cargo build --release`. The executable can then be run through `./target/release/story-generator`.
+
+`story_generator` has two modes - `generate` and `stats`. See example usage below, or run `./target/release/story-generator --help`.
+
+### Example usage
+
+```
+> ./target/release/story-generator generate '{"number":2,"unit_of_measure":"mile","place":"school","adjective":"blue","noun":"rock"}'
+One day Anna was walking her 2 mile commute to school and found a blue rock on the ground.
+
+
+> ./target/release/story-generator generate '{"number":1,"unit_of_measure":"km","place":"school","adjective":"fast","noun":"car"}'
+One day Anna was walking her 1 km commute to school and found a fast car on the ground.
+
+> ./target/release/story-generator stats
+Min number: 1
+Max number: 2
+Most common unit_of_measure: mile. Occurences: 1
+Most common place: school. Occurences: 2
+Most common adjective: fast. Occurences: 1
+Most common noun: car. Occurences: 1
+
+```
